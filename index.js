@@ -1,16 +1,71 @@
 const tutorials = [
-  'What Does The This Keyword Mean?',
-  "What Is The Constructor OO Pattern?",
-  'Implementing Blockchain Web API',
+  'what does the this keyword mean?',
+  'What is the Constructor OO pattern?',
+  'implementing Blockchain Web API',
   'The Test Driven Development Workflow',
-  "What Is NaN And How Can We Check For It",
-  "What Is The Difference Between StopPropagation And PreventDefault?",
-  "Immutable State And Pure Functions",
-  "What Is The Difference Between == And ===?",
-  "What Is The Difference Between Event Capturing And Bubbling?",
-  "What Is JSONP?",
+  'What is NaN and how Can we Check for it',
+  'What is the difference between stopPropagation and preventDefault?',
+  'Immutable State and Pure Functions',
+  'what is the difference between == and ===?',
+  'what is the difference between event capturing and bubbling?',
+  'what is JSONP?'
 ];
 
-const titleCased = () => {
-  return tutorials
+
+
+
+//How can we "iterate" through individual words in a string?
+//Can we execute an iteration inside an iteration? How?
+//How can we capitalize just the first letter in a word?
+
+/*chat GPT answer
+
+// Iterate through individual words in a string
+tutorials.forEach(function(tutorial) {
+  const words = tutorial.split(' ');
+  words.forEach(function(word) {
+    console.log(word);
+  });
+});
+
+// Capitalize just the first letter in a word
+function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
+
+const exampleWord = "example";
+const capitalizedWord = capitalizeFirstLetter(exampleWord);
+console.log(capitalizedWord); // Output: "Example"
+*/
+
+//Chat's answer
+/*
+const titleCased = function() {
+  return tutorials.map(function(line) {
+
+    const words = line.split(" ");
+
+    const capitalizedWords = words.map(function(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+
+    const response = capitalizedWords.join(" ");
+    return response;
+  });
+};
+
+console.log(titleCased());
+*/
+
+//chat's answer 2
+
+const titleCased = () => {
+  return tutorials.map((line) => {
+    return line.split(/(\s+)/).map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join("");
+  });
+};
+
+console.log(titleCased());
+
